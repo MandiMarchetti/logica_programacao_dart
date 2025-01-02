@@ -3,23 +3,22 @@ import 'dart:io';
 
 void main() {
 
-  print('Calcule seu IMC. Primeiro, digite seu nome:');
-  final String? nome = stdin.readLineSync();
+  final String? nome = pegarInput('Calcule seu IMC. Primeiro, digite seu nome:', 'nome');
 
-  print('Muito bem! Agora digite seu peso:');
-  final String? pesoString = stdin.readLineSync();
+  final String? pesoString = pegarInput('Muito bem! Agora digite seu peso:', 'peso');
 
-  print('Ótimo! $nome, por último, digite sua altura (considere"." para separar metros de centímetros):');
-  final String? alturaString = stdin.readLineSync();
+  final String? alturaString = pegarInput('Ótimo! $nome, por último, digite sua altura (considere"." para separar metros de centímetros):', 'altura');
 
-
+//Conversão as Strings em numeros ára realizar o calculo em 'resultado'
   double peso = double.parse(pesoString!);
   double altura = double.parse(alturaString!);
 
+//double armazena o resultado do calculo do IMC
   double resultado = peso / (altura * altura);
 
-  print('\n\n');
+  print('\n\n'); //Para pular duas linhas
 
+//A frase com a mensagem aparecerá de acordo com o resultado do calculo do IMC
   if (resultado <= 18.5) {
     print('$nome, seu resultado é: $resultado - Baixo Peso');
   } else if (resultado <=24.9) {
@@ -35,4 +34,18 @@ void main() {
   }
 
    print('\n\n');
+}
+
+
+//Função genérica para pegar os inputs - Nesse caso eu criei uma genérica que pode servir para os três inputs
+String pegarInput(String frase, String input){
+  print(frase);
+
+  String? input = stdin.readLineSync();
+
+  if(input == null) {
+    return ('Null');
+  } else{
+    return input;
+  }
 }
