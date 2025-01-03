@@ -14,7 +14,7 @@ void main() {
   double altura = double.parse(alturaString!);
 
 //double armazena o resultado do calculo do IMC
-  double resultado = peso / (altura * altura);
+  double resultado = calcularImc(peso, altura);
 
   print('\n\n'); //Para pular duas linhas
 
@@ -48,4 +48,9 @@ String pegarInput(String frase, String input){
   } else{
     return input;
   }
+}
+
+//Função para calcular o peso
+double calcularImc(double peso, double altura){
+  return peso / (altura*altura);
 }
